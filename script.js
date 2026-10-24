@@ -1,12 +1,11 @@
 const rssUrl = 'https://www.20minutes.fr/feeds/rss-une.xml';
-const proxyUrl = `http://cors.io/?u=${encodeURIComponent(rssUrl)}`;
 
-fetch(proxyUrl)
+fetch(rssUrl)
     .then(response => {
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
-        return response.text(); // Le flux RSS de 20 Minutes est du XML brut
+        return response.text();
     })
     .then(str => {
         const parser = new DOMParser();
